@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>七夕祝福 | </title>
+  <meta name="description" content="点亮星星，收下我的七夕祝福吧。" />
+  <style>
+    :root { --fg:#fff; --overlay: rgba(0,0,0,.35); }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html,body { height: 100%; margin: 0; }
+
+    /* 全屏背景图 */
+    body {
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Hiragino Sans","PingFang SC","Microsoft YaHei",sans-serif;
+      color: var(--fg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: env(safe-area-inset-top) 12px env(safe-area-inset-bottom);
+      background:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url("./star.png") center/cover no-repeat;
+      -webkit-font-smoothing: antialiased;
+      touch-action: manipulation;
+      overflow: hidden;
+    }
+
+    header { 
+      position: absolute; 
+      top: calc(18px + env(safe-area-inset-top)); 
+      left: 0; right: 0; 
+      text-align: center; 
+      padding: 0 16px; 
+      text-shadow: 0 2px 6px rgba(0,0,0,.45); 
+    }
+    h1 { margin: 0 0 6px; font-size: clamp(18px, 4.5vw, 28px); letter-spacing: .04em; }
+    p.lead { margin: 0; opacity: .92; font-size: clamp(12px, 3.6vw, 16px); }
+
+    /* 定位容器：去掉阴影和圆角 */
+    .sky {
+      position: relative;
+      width: min(560px, 92vw);
+      height: min(560px, 92vw);
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .star {
+      position: absolute;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-size: clamp(28px, 7vw, 42px);
+      line-height: 1;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: transform .12s ease, filter .2s ease;
+      text-shadow: 0 0 10px rgba(255,215,0,.55), 0 0 18px rgba(255,215,0,.35);
+    }
+    .star:active { transform: translate(-50%, -50%) scale(.92); }
+    @media (hover:hover) { .star:hover { transform: translate(-50%, -50%) scale(1.06); } }
+
+    .msg {
+      position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
+      width: min(520px, 88vw);
+      background: rgba(10,14,28,.76); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.14); border-radius: 16px;
+      padding: 14px 16px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,.45);
+      font-size: clamp(13px, 3.6vw, 16px); line-height: 1.6;
+    }
+    .msg b { color: #ffd86b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>七夕的祝福 ✨</h1>
+    <p class="lead">点亮一颗星星，收下我的一句话</p>
+  </header>
+
+  <div class="sky" id="sky" aria-label="seven-stars">
+    <!-- 七颗星：随便摆成心形，也可以调成北斗七星 -->
+    <button class="star" type="button" style="left:50%; top:18%;">⭐️</button>
+    <button class="star" type="button" style="left:32%; top:28%;">⭐️</button>
+    <button class="star" type="button" style="left:68%; top:28%;">⭐️</button>
+    <button class="star" type="button" style="left:24%; top:46%;">⭐️</button>
+    <button class="star" type="button" style="left:76%; top:46%;">⭐️</button>
+    <button class="star" type="button" style="left:50%; top:60%;">⭐️</button>
+    <button class="star" type="button" style="left:50%; top:78%;">⭐️</button>
+
+    <div class="msg" id="msg">点一颗星星，就会出现一句祝福 🎋</div>
+  </div>
+
+  <script>
+    // 更适合发给朋友的祝福语
+    const WISHES = [
+      "愿你每天都能开开心心 😊",
+      "工作顺利，生活顺心 ✨",
+      "七夕快乐！好运常伴你 🎉",
+      "无论多忙，都要记得好好休息 🌙",
+      "愿你前路顺遂，心中有光 🌟",
+      "平安喜乐，万事顺意 🍀",
+      "今天也要元气满满！💪"
+    ];
+
+    const msg = document.getElementById("msg");
+
+    document.querySelectorAll(".star").forEach((s)=>{
+      s.addEventListener("click", ()=>{
+        const text = WISHES[Math.floor(Math.random()*WISHES.length)];
+        msg.textContent = text;
+      });
+    });
+  </script>
+</body>
+</html>
