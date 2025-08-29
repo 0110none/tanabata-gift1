@@ -74,7 +74,7 @@
 <body>
   <header>
     <h1>七夕的祝福 ✨</h1>
-    <p class="lead">点亮一颗星星，收下我的一句话</p>
+    <p class="lead">点击一颗星星</p>
   </header>
 
   <div class="sky" id="sky" aria-label="seven-stars">
@@ -87,7 +87,7 @@
     <button class="star" type="button" style="left:50%; top:60%;">⭐️</button>
     <button class="star" type="button" style="left:50%; top:78%;">⭐️</button>
 
-    <div class="msg" id="msg">点一颗星星，就会出现一句祝福 🎋</div>
+    <div class="msg" id="msg">点击星星试试吧， 🎋</div>
   </div>
 
   <script>
